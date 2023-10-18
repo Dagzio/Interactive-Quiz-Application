@@ -1,10 +1,12 @@
-import Question from "components/Question/Question";
+// import Question from "components/Question/Question";
 import questions from '../Question/questions.json'
+import Answers from "components/Answers/Answers";
 
 const App = () => {
   return (
     <div>
-      <Question questions={questions} />
+      <Answers questions={questions} />
+
     </div>
   );
 };

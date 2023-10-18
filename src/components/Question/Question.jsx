@@ -1,9 +1,7 @@
 
-const Question = ({ questions }) => {
+const Question = ({ content }) => {
     return <div>
-        {questions.map(question => {
-            return <p key={question.id}>{question.question}</p>
-        })}
+       <p>{content}</p>
     </div>
 };
 
