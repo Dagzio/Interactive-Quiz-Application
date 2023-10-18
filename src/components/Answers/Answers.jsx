@@ -14,6 +14,11 @@ const Answers = ({ questions }) => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setPoints(0);
+  };
+
   return (
     <div>
       {currentQuestion < questions.length ? (
@@ -32,7 +37,7 @@ const Answers = ({ questions }) => {
           </ul>
         </>
       ) : (
-        console.log('END')
+        <button onClick={() => resetQuiz()}>Play Again?</button>
       )}
     </div>
   );
