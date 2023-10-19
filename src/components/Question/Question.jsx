@@ -1,8 +1,9 @@
+import { QuestionBar, QuestionContent } from "./Question.styled";
 
 const Question = ({ content }) => {
-    return <div>
-       <p>{content}</p>
-    </div>
+    return <QuestionBar>
+       <QuestionContent>{content}</QuestionContent>
+    </QuestionBar>
 };
 
 export default Question;

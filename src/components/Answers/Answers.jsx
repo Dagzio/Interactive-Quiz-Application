@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import Question from 'components/Question/Question';
+import Timer from 'components/Timer/Timer';
+import { ButtonList, AnswerBtn, ListItem, ResetBtn } from './Answers.styled';
+
+
+const colors = ['#3393d3', '#d84636', '#2ecc71', '#f39c12'];
 
 const Answers = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -19,26 +24,34 @@ const Answers = ({ questions }) => {
     setPoints(0);
   };
 
+ 
+  const handleTimeout = () => {
+   setPoints(points - 1000);
+   
+  }
+
   return (
     <div>
       {currentQuestion < questions.length ? (
         <>
           <Question content={question.question} />
-          <ul>
+          <ButtonList>
             {question.options.map((option, index) => {
               return (
-                <li key={index}>
-                  <button onClick={() => handleOptionClick(option)}>
+                <ListItem key={index}>
+                  <AnswerBtn color={colors[index]} onClick={() => handleOptionClick(option)}>
                     {option}
-                  </button>
-                </li>
+                  </AnswerBtn>
+                </ListItem>
               );
             })}
-          </ul>
+          </ButtonList>
+          <Timer onTimeout={handleTimeout}/>
         </>
       ) : (
-        <button onClick={() => resetQuiz()}>Play Again?</button>
+        <ResetBtn onClick={() => resetQuiz()}>Play Again?</ResetBtn>
       )}
+      
     </div>
   );
 };

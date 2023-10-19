@@ -1,13 +1,14 @@
-// import Question from "components/Question/Question";
 import questions from '../Question/questions.json'
 import Answers from "components/Answers/Answers";
+import { Container, Main } from './App.styled';
 
 const App = () => {
   return (
-    <div>
+    <Container>
+      <Main>
       <Answers questions={questions} />
-
-    </div>
+      </Main>
+    </Container>
   );
 };
 export default App;
