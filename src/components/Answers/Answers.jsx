@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Question from 'components/Question/Question';
-import Timer from 'components/Timer/Timer';
-import UserScore from './AnswersStatistic';
+import Question from '../Question/Question';
+import Timer from '../Timer/Timer';
+import UserPoints from '../UserPoints/UserPoints';
 import { ButtonList, AnswerBtn, ListItem, ResetBtn } from './Answers.styled';
 
 
@@ -33,9 +33,10 @@ const Answers = ({ questions }) => {
 
   return (
     <div>
-      <UserScore points={points} />
+      
       {currentQuestion < questions.length ? (
         <>
+        <Timer onTimeout={handleTimeout} points={points}/>
           <Question content={question.question} />
           <ButtonList>
             {question.options.map((option, index) => {
@@ -48,7 +49,8 @@ const Answers = ({ questions }) => {
               );
             })}
           </ButtonList>
-          <Timer onTimeout={handleTimeout} points={points}/>
+          
+          <UserPoints points={points} />
         </>
       ) : (
         <ResetBtn onClick={() => resetQuiz()}>Play Again?</ResetBtn>

@@ -10,7 +10,7 @@ max-width: 1200px;
 export const Main = styled.main`
 //   height: 96vh;
   height: 100vh;
-  padding: 4px 8px;
+  padding: 4px 16px;
   display: flex;
   align-items:center;
   justify-content:center;

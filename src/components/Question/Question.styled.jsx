@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const QuestionBar = styled.div`
 
-border-radius: 2px;
+border-radius: 4px;
 max-width: 380px;
 text-align: center;
-padding: 2px 16px;
+padding: 8px 16px;
 margin-bottom: 16px;
-background-color: #FFF;
+background-color: #F6F4F3;
 `;
 
 export const QuestionContent = styled.p`

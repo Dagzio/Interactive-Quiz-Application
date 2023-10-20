@@ -4,11 +4,12 @@ export const ButtonList = styled.ul`
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-bottom: 24px;
 `;
 
 export const ListItem = styled.li`
 width: 296px;
-height: 40px;
+height: 64px;
 
 &:not(last-child){
     margin-bottom: 4px;
@@ -22,10 +23,10 @@ width: 100%;
 height: 100%;
 text-align: center;
 font-size:16px;
-color:#FFF;
+color: #FFF;
 background-color: ${props => props.color};
 border: transparent;
-border-radius: 4px;
+border-radius: 8px;
 cursor: pointer;
 text-shadow: 1px 1px 1px #000000;
 

@@ -32,7 +32,7 @@
     {
         
         "id":6,
-        "question": "What was the name of the house-elf who served in the Malfoy household?",
+        "question": "What was the name of the house-elf who helped Harry Potter?",
         "options": ["Winky", "Kreacher", "Dobby", "Hokey"],
         "correctAnswer": "Dobby"
     },

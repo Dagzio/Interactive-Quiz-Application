@@ -1,28 +1,24 @@
 import { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
+import { TimerWrapper, TimerSeconds } from './Timer.styled';
 
 const Timer = ({onTimeout, points}) => {
 
-    const expiryTime = 100 * 30 * 5;
+    const expiryTime = 1000 * 60 * 100;
 
     const {seconds, restart} = useTimer({
         expiryTimestamp: Date.now() + expiryTime,
-         onExpire: () => onExpireTime()});
+         onExpire: () => onTimeout()});
 
          useEffect(() => {
             restart(Date.now() + expiryTime);
          // eslint-disable-next-line react-hooks/exhaustive-deps
-         }, [points])
-
-         const onExpireTime = async () => {
-            await onTimeout();
-            restart(Date.now() + expiryTime)
-         }
+         }, [points]);
 
     return (
-            <div>
-                <span>{ seconds}</span>
-            </div>
+            <TimerWrapper>
+                <TimerSeconds>{ seconds}</TimerSeconds>
+            </TimerWrapper>
     );
 };
 
