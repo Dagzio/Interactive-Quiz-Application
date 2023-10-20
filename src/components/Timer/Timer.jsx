@@ -1,28 +1,28 @@
+import { useEffect } from 'react';
+import { useTimer } from 'react-timer-hook';
 
-import Countdown from 'react-countdown-now';
+const Timer = ({onTimeout, points}) => {
 
-const Timer = ({onTimeout, refCallback}) => {
-    
+    const expiryTime = 100 * 30 * 5;
 
-    const renderer = ({ seconds, completed }) => {
-        if (completed) {
-            // Таймер завершился
-            return <span>Hello</span>
-            
-        } else {
-            // Отображаем оставшееся время в минутах и секундах
-            return <span>{seconds}</span>;
-        }
-    };
+    const {seconds, restart} = useTimer({
+        expiryTimestamp: Date.now() + expiryTime,
+         onExpire: () => onExpireTime()});
+
+         useEffect(() => {
+            restart(Date.now() + expiryTime);
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+         }, [points])
+
+         const onExpireTime = async () => {
+            await onTimeout();
+            restart(Date.now() + expiryTime)
+         }
 
     return (
-        <div>
-            <Countdown
-                date={Date.now() + 3000} // 5 минут (в миллисекундах)
-                renderer={renderer}
-                onComplete={() => onTimeout()}
-            />
-        </div>
+            <div>
+                <span>{ seconds}</span>
+            </div>
     );
 };
 
