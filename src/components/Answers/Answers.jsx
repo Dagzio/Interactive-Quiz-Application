@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import useSound from 'use-sound';
 import Question from '../Question/Question';
 import Timer from '../Timer/Timer';
 import UserPoints from '../UserPoints/UserPoints';
+import {correct, incorrect , end} from '../../mp3/sounds'
 import { ButtonList, AnswerBtn, ListItem, ResetBtn } from './Answers.styled';
 
 
@@ -12,10 +14,22 @@ const Answers = ({ questions }) => {
   const [points, setPoints] = useState(0);
   const question = questions[currentQuestion];
 
+
+  const [playCorrect] = useSound(correct);
+  const [playIncorrect] = useSound(incorrect);
+  const [playEndRound] = useSound(end);
+
+
   const handleOptionClick = selectedOption => {
-    selectedOption === question.correctAnswer
-      ? setPoints(points + 1000)
-      : setPoints(points - 1000);
+    if(selectedOption === question.correctAnswer) {
+      playCorrect();
+      setPoints(points + 1000)
+    }
+      else {
+        playIncorrect();
+        setPoints(points - 1000);
+      }
+    
 
     setCurrentQuestion(currentQuestion + 1);
   };
@@ -31,11 +45,13 @@ const Answers = ({ questions }) => {
    setCurrentQuestion(currentQuestion + 1);
   }
 
+
   return (
     <div>
-      
+
       {currentQuestion < questions.length ? (
         <>
+        
         <Timer onTimeout={handleTimeout} points={points}/>
           <Question content={question.question} />
           <ButtonList>
@@ -53,6 +69,7 @@ const Answers = ({ questions }) => {
           <UserPoints points={points} />
         </>
       ) : (
+        playEndRound(),
         <ResetBtn onClick={() => resetQuiz()}>Play Again?</ResetBtn>
       )}
       
