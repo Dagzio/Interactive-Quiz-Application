@@ -1,0 +1,72 @@
+[
+  {
+    "question": "What was Harry Potter's full name?",
+    "options": [
+      "Harry James Potter",
+      "Harry William Potter",
+      "Harry John Potter",
+      "Harry Lee Potter"
+    ],
+    "correctAnswer": "Harry James Potter"
+  },
+  {
+    "question": "Which magical school does Harry Potter attend?",
+    "options": [
+      "Ilvermorny",
+      "Beauxbatons Academy of Magic",
+      "Durmstrang Institute",
+      "Hogwarts"
+    ],
+    "correctAnswer": "Hogwarts"
+  },
+  {
+    "question": "What was the name of the headmaster of Hogwarts?",
+    "options": [
+      "Minerva McGonagall",
+      "Severus Snape",
+      "Albus Dumbledore",
+      "Rubeus Hagrid"
+    ],
+    "correctAnswer": "Albus Dumbledore"
+  },
+  {
+    "question": "What is the name of the dark force that feeds on happiness and souls?",
+    "options": ["Dementors", "Boggarts", "Acromantulas", "Inferi"],
+    "correctAnswer": "Dementors"
+  },
+  {
+    "question": "Which subject did Severus Snape teach at Hogwarts?",
+    "options": ["Transfiguration", "Potions", "Herbology", "Divination"],
+    "correctAnswer": "Potions"
+  },
+  {
+    "question": "What was the name of the house-elf who helped Harry Potter?",
+    "options": ["Winky", "Kreacher", "Dobby", "Hokey"],
+    "correctAnswer": "Dobby"
+  },
+  {
+    "question": "Which spell did Harry Potter use to summon his broomstick?",
+    "options": ["Expelliarmus", "Alohomora", "Accio", "Expecto Patronum"],
+    "correctAnswer": "Accio"
+  },
+  {
+    "question": "What are the names of the three main characters - Harry, Ron, and...?",
+    "options": ["Hermione", "Luna", "Neville", "Draco"],
+    "correctAnswer": "Hermione"
+  },
+  {
+    "question": "What is the name of the main villain in the Harry Potter series?",
+    "options": [
+      "Lucius Malfoy",
+      "Severus Snape",
+      "Bellatrix Lestrange",
+      "Voldemort"
+    ],
+    "correctAnswer": "Voldemort"
+  },
+  {
+    "question": "What animal appears to Harry Potter from the Patronus spell?",
+    "options": ["Dragon", "Unicorn", "Phoenix", "Stag"],
+    "correctAnswer": "Stag"
+  }
+]

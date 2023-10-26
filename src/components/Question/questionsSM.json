@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the name of Mario's brother?",
+    "options": ["Luigi", "Wario", "Toad", "Bowser"],
+    "correctAnswer": "Luigi"
+  },
+  {
+    "question": "What is the name of the princess Mario often saves?",
+    "options": ["Daisy", "Peach", "Rosalina", "Pauline"],
+    "correctAnswer": "Peach"
+  },
+  {
+    "question": "What is the main currency in the Mario games?",
+    "options": ["Gems", "Coins", "Stars", "Mushrooms"],
+    "correctAnswer": "Coins"
+  },
+  {
+    "question": "What is the name of Mario's dinosaur friend?",
+    "options": ["Yoshi", "Koopa", "Boo", "Goomba"],
+    "correctAnswer": "Yoshi"
+  },
+  {
+    "question": "Who is Mario's arch-nemesis?",
+    "options": ["King Boo", "Wario", "Bowser", "Donkey Kong"],
+    "correctAnswer": "Bowser"
+  },
+  {
+    "question": "What is the name of Mario's racing game series?",
+    "options": ["Mario Kart", "Super Mario Run", "Mario Party", "Mario Tennis"],
+    "correctAnswer": "Mario Kart"
+  },
+  {
+    "question": "What power-up allows Mario to fly?",
+    "options": ["Super Mushroom", "Fire Flower", "Cape Feather", "Starman"],
+    "correctAnswer": "Cape Feather"
+  },
+  {
+    "question": "What is the name of Mario's home city?",
+    "options": ["Mushroom City", "Toad Town", "Mushroom Kingdom", "Mario Land"],
+    "correctAnswer": "Mushroom Kingdom"
+  },
+  {
+    "question": "What is the first level called in the original Super Mario Bros. game?",
+    "options": ["World 1-1", "Level 1-1", "Stage 1-1", "Zone 1-1"],
+    "correctAnswer": "World 1-1"
+  },
+  {
+    "question": "What item allows Mario to grow larger?",
+    "options": ["Super Star", "Super Leaf", "Mega Mushroom", "Super Mushroom"],
+    "correctAnswer": "Super Mushroom"
+  }
+]

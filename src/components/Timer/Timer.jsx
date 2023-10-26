@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { TimerWrapper, TimerSeconds } from './Timer.styled';
 
-const Timer = ({onTimeout, points}) => {
+const Timer = ({onTimeout, points, question}) => {
 
-    const expiryTime = 1000 * 60 * 100;
+    const expiryTime = 100 * 30 * 5;
 
     const {seconds, restart} = useTimer({
         expiryTimestamp: Date.now() + expiryTime,
@@ -12,8 +12,8 @@ const Timer = ({onTimeout, points}) => {
 
          useEffect(() => {
             restart(Date.now() + expiryTime);
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-         }, [points]);
+
+         }, [points, question]);
 
     return (
             <TimerWrapper>
