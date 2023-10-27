@@ -1,7 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import RulesModal from "components/RulesModal/RulesModal";
-import { MainPageHPQuiz, MainPageSMQuiz, MainPageWrapper, MainPageList, MainPageListItem,SpanWrapper, TextWrapper } from "./MainPage.styled";
+import { MainPageHPQuiz, MainPageSMQuiz, MainPageWrapper, MainPageList, MainPageListItem,SpanWrapper, TextWrapper, ButtonHPIcon, ButtonSMIcon } from "./MainPage.styled";
 import { useState } from 'react';
+import icon from '../../img/symbol-defs.svg'
 
 
 const MainPage =() => {
@@ -13,12 +14,27 @@ const MainPage =() => {
       };
 
     return  <MainPageWrapper>
-
+<h1>Change YOur Quiz</h1>
         <nav>
             <MainPageList>
-                <MainPageListItem><MainPageHPQuiz to={'quiz/harry-potter'}>Harry Potter</MainPageHPQuiz></MainPageListItem>
+                <MainPageListItem>
+                    <MainPageHPQuiz to={'quiz/harry-potter'}>Harry Potter 
+                    <ButtonHPIcon>
+                        <use href={icon + "#broom"}/>
+                    </ButtonHPIcon>
+                    </MainPageHPQuiz>
+                    </MainPageListItem>
+
                 <SpanWrapper><TextWrapper>OR</TextWrapper></SpanWrapper>
-                <MainPageListItem><MainPageSMQuiz to={'quiz/super-mario'}>Super Mario</MainPageSMQuiz></MainPageListItem>
+
+                <MainPageListItem>
+                    <MainPageSMQuiz to={'quiz/super-mario'}>Super Mario
+                    <ButtonSMIcon>
+                        <use href={icon + "#mario-flag"}/>
+                    </ButtonSMIcon>
+                    </MainPageSMQuiz>
+                    </MainPageListItem>
+
             </MainPageList>
         </nav>
 

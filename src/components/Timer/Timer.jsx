@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { TimerWrapper, TimerSeconds } from './Timer.styled';
@@ -13,7 +14,8 @@ const Timer = ({onTimeout, points, question}) => {
          useEffect(() => {
             restart(Date.now() + expiryTime);
 
-         }, [points, question]);
+
+         }, [ points, question, expiryTime, restart]);
 
     return (
             <TimerWrapper>

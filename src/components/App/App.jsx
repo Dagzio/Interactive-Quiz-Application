@@ -1,5 +1,3 @@
-// import questions from '../Question/questions.json'
-// import Answers from "components/Answers/Answers";
 import Quiz from 'components/Quiz/Quiz';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -13,6 +11,27 @@ const App = () => {
       <Suspense>
         <MainPage/>
         </Suspense>}/>
+
+        {/* <Route
+          path="register"
+          element={
+            <Suspense>
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <Suspense>
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            </Suspense>
+          }
+        /> */}
 
       <Route path='quiz/:quizType' element={
        <Suspense>
