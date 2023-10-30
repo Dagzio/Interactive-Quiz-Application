@@ -10,12 +10,15 @@ text-align:center;
 `;
 
 export const MainPageTitle = styled.h1`
-
+color: #ffffff;
+  text-shadow: 2px 3px 3px #000000;
 margin-bottom:44px;
 
 `;
 
 export const MainPageText = styled.h2`
+color: #ffffff;
+  text-shadow: 2px 3px 3px #000000;
 margin-bottom: 16px;
 `;
 

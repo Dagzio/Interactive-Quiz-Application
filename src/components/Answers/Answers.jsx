@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import Question from '../Question/Question';
 import Timer from '../Timer/Timer';
@@ -11,17 +11,28 @@ import {
   ListItem,
   ResetBtn,
 } from './Answers.styled';
+import { useLocation } from 'react-router-dom';
 
 const colors = ['#3393d3', '#d84636', '#2ecc71', '#f39c12'];
 
-const Answers = ({ questions }) => {
+const Answers = ({ questions, soundtrack }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [points, setPoints] = useState(0);
   const question = questions[currentQuestion];
 
+  const location = useLocation();
+
+  const a = location.pathname.indexOf('/quiz/') === 0;
+
   const [playCorrect] = useSound(correct);
   const [playIncorrect] = useSound(incorrect);
   const [playEndRound] = useSound(end);
+  const [playSoundtrack, {pause}] = useSound(soundtrack);
+
+  useEffect(() => {
+    a ? playSoundtrack() : pause()
+  }, [a, playSoundtrack]);
+  
 
   const handleOptionClick = selectedOption => {
     if (selectedOption === question.correctAnswer) {
@@ -81,6 +92,7 @@ const Answers = ({ questions }) => {
           </ButtonList>
 
           <UserPoints points={points} />
+          <button type='button' onClick={()=> pause()}>STOP</button>
         </>
       ) : (
         (playEndRound(),
