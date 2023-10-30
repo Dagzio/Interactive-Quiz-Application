@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix';
 
 export const userHandleSignUpFulfilled = (state, { payload }) => {
+  state.user = {...payload.user}
     state.token = payload.token;
     state.isLoggedIn = true;
     Notify.success('You have been registered successful');
