@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import RulesModal from "components/RulesModal/RulesModal";
-import { MainPageHPQuiz, MainPageSMQuiz, MainPageWrapper, MainPageList, MainPageListItem,SpanWrapper, TextWrapper, ButtonHPIcon, ButtonSMIcon } from "./MainPage.styled";
+import { MainPageHPQuiz, MainPageSMQuiz, MainPageList, MainPageListItem,SpanWrapper, TextWrapper, ButtonHPIcon, ButtonSMIcon } from "./MainPage.styled";
 import { useState } from 'react';
 import icon from '../../img/symbol-defs.svg'
 
@@ -13,7 +13,7 @@ const MainPage =() => {
         setIsOpen(false);
       };
 
-    return  <MainPageWrapper>
+    return  <div>
 <h1>Change YOur Quiz</h1>
         <nav>
             <MainPageList>
@@ -43,7 +43,7 @@ const MainPage =() => {
           <RulesModal onClose={onClose}/>,
           document.querySelector('#rules-modal-root')
         )}
-    </MainPageWrapper>
+    </div>
    
 
     

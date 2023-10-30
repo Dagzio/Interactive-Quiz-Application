@@ -10,11 +10,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router basename="/Interactive-Quiz-Application">
-      {/* <Provider store={store}> */}
-        {/* <PersistGate persistor={persistor}> */}
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
     <App />
-    {/* </PersistGate>
-    </Provider> */}
+    </PersistGate>
+    </Provider>
     </Router>
     
   </React.StrictMode>

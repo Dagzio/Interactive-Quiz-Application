@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
 max-width: 1200px;
   margin: 0 auto;
 `;
 
 export const Main = styled.main`
-  height: 100vh;
+  height: 89vh;
   padding: 4px 16px;
   display: flex;
   align-items:center;

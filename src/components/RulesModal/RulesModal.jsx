@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Backdrop, ModalWindow, Overlay } from './RulesModal.styled';
 
 const StartRules = ({onClose }) => {
