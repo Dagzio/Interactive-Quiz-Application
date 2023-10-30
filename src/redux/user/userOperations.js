@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'hhttps://backend-interactive-quiz.onrender.com';
+axios.defaults.baseURL = 'https://backend-interactive-quiz.onrender.com';
 
 export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

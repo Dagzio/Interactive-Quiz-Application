@@ -10,6 +10,4 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, userReducer);
 
-export const reducer = {
-  user: persistedReducer,
-};
+export const reducer = persistedReducer;

@@ -22,7 +22,6 @@ const SharedLayout = () => {
   return (<>
     <Header />
     <Container>
-      
       <Main>
         <Suspense>
           <Outlet />

@@ -1,7 +1,7 @@
 import Answers from 'components/Answers/Answers';
 import questionsHP from '../Question/questionsHP.json';
 import questionsSM from '../Question/questionsSM.json';
-import {Container, Main} from '../SharedLayout/SharedLayout.styled'
+import {Container} from '../SharedLayout/SharedLayout.styled'
 import { useParams } from 'react-router-dom';
 
 const Quiz = () => {

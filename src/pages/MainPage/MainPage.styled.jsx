@@ -2,11 +2,33 @@ import { ListItem } from 'components/Answers/Answers.styled';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+
+export const MainPageWrapper = styled.div`
+display:flex;
+flex-direction: column;
+text-align:center;
+`;
+
+export const MainPageTitle = styled.h1`
+
+margin-bottom:44px;
+
+`;
+
+export const MainPageText = styled.h2`
+margin-bottom: 16px;
+`;
+
+
 export const MainPageList = styled.ul`
-  @media (min-width: 768px) {
-    display: flex;
+display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 

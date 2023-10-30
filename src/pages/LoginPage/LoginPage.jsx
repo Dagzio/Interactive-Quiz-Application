@@ -1,11 +1,29 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {string, object} from 'yup';
 import { userLogIn } from '../../redux/user/userOperations';
-import { LogIn, LogInForm, LogInInput, LogInLabel } from './LoginPage.styled';
+import {
+  LogIn,
+  LogInForm,
+  LogInInput,
+  LogInPasswordInput,
+  LogInLabel,
+} from './LoginPage.styled';
+
+const LogInSchema = object({
+    email: string().email('Please write a correct email').required(),
+    password: string().min(6).required(),
+  })
+  .required();
+
+
 
 const LoginPage = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm({
+    resolver: yupResolver(LogInSchema),
+  });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -43,14 +61,14 @@ const LoginPage = () => {
 
       <LogInLabel>
         Password
-        <LogInInput
+        <LogInPasswordInput
           type="password"
           {...register('password')}
           onChange={handleChange(setPassword)}
           value={password}
           id="userPassword"
           required
-        ></LogInInput>
+        ></LogInPasswordInput>
       </LogInLabel>
 
       <LogIn type="submit">Log In</LogIn>

@@ -5,6 +5,13 @@ export const RegisterForm = styled.form`
   display: inline-block;
 `;
 
+export const RegisterLabel = styled.label`
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+
+`;
+
 export const NameInput = styled.input`
   width: 100%;
   padding: 8px;
@@ -23,7 +30,7 @@ export const NameInput = styled.input`
 export const EmailInput = styled(NameInput)``;
 
 export const PasswordInput = styled(NameInput)`
-  margin-bottom: 36px;
+margin-bottom: 28px;
 `;
 
 export const SignUp = styled.button`
@@ -36,7 +43,7 @@ export const SignUp = styled.button`
   border: none;
   color: white;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 5px 5px 6px 0px #000000;
@@ -48,8 +55,3 @@ export const SignUp = styled.button`
   }
 `;
 
-export const RegisterLabel = styled.label`
-  font-weight: 600;
-  font-size: 16px;
-  color: #ffffff;
-`;

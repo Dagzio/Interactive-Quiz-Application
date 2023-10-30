@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {string, object} from 'yup';
 import { userRegister } from '../../redux/user/userOperations';
 import {
   RegisterLabel,
@@ -11,8 +13,19 @@ import {
   PasswordInput,
 } from './RegisterPage.styled';
 
+const RegisterSchema = object({
+    name: string().min(3).required(),
+    email: string().email('Please write a correct email').required(),
+    password: string().min(6).required(),
+  })
+  .required();
+
+
+
 const RegisterPage = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm({
+    resolver: yupResolver(RegisterSchema),
+  });
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
