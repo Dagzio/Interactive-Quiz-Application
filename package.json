@@ -2,7 +2,7 @@
   "name": "interactive-quiz-application",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Dagzio.github.io/Interactive-Quiz-Application/",
+  "homepage": "https://dagzio.github.io/Interactive-Quiz-Application/",
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.9.7",
