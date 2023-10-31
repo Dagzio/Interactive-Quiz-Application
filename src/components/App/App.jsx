@@ -1,11 +1,11 @@
 import Quiz from 'components/Quiz/Quiz';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
+const RegisterPage = lazy(() => import('../../pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 
 const App = () => {
   return (

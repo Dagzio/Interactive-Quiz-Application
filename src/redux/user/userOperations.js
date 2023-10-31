@@ -44,7 +44,6 @@ export const userLogIn = createAsyncThunk(
   async (userData, { dispatch }) => {
     const { data } = await LogIn(userData);
     dispatch(getCurrentUser());
-
     return data;
   }
 );

@@ -13,7 +13,7 @@ const SharedLayout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userToken && !stateUser) {
+    if (userToken && !stateUser._id) {
       setToken(userToken);
       dispatch(getCurrentUser());
     }

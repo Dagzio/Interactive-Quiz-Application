@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {string, object} from 'yup';
 import { userRegister } from '../../redux/user/userOperations';
@@ -12,6 +12,7 @@ import {
   NameInput,
   PasswordInput,
 } from './RegisterPage.styled';
+import { selectIsLoading } from 'redux/selectors';
 
 const RegisterSchema = object({
     name: string().min(3).required(),
@@ -29,6 +30,7 @@ const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handleChange = setState => e => {
@@ -83,7 +85,6 @@ const RegisterPage = () => {
           required
         ></PasswordInput>
       </RegisterLabel>
-
       <SignUp type="submit">Sign Up</SignUp>
     </RegisterForm>
   );

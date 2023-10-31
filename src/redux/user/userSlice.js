@@ -12,6 +12,7 @@ import {
   userHandleSignUpRejected,
   userHandleGetUserFulfilled,
   userLogOutFulfilled,
+  userHandlePending
 } from '../handleFunctions';
 import userInitialState from './userInitialState';
 
@@ -20,6 +21,7 @@ const userSlice = createSlice({
   initialState: userInitialState,
   extraReducers: builder => {
     builder
+      .addCase(userRegister.pending, userHandlePending)
       .addCase(userRegister.fulfilled, userHandleSignUpFulfilled)
       .addCase(userRegister.rejected, userHandleSignUpRejected)
       .addCase(userLogIn.fulfilled, userHandleLogInFulfilled)

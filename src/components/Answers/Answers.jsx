@@ -12,17 +12,19 @@ import {
   ResetBtn,
 } from './Answers.styled';
 import { useLocation } from 'react-router-dom';
+import UserFinalScore from 'components/UserFinalScore/UserFInalScore';
 
 const colors = ['#3393d3', '#d84636', '#2ecc71', '#f39c12'];
 
 const Answers = ({ questions, soundtrack }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [points, setPoints] = useState(0);
+  const [userCorrectAnswers, setUserCorrectAnswers] = useState(0);
   const question = questions[currentQuestion];
 
   const location = useLocation();
 
-  const a = location.pathname.indexOf('/quiz/') === 0;
+  const quizLocation = location.pathname.indexOf('/quiz/') === 0;
 
   const [playCorrect] = useSound(correct);
   const [playIncorrect] = useSound(incorrect);
@@ -30,13 +32,14 @@ const Answers = ({ questions, soundtrack }) => {
   const [playSoundtrack, { pause }] = useSound(soundtrack);
 
   useEffect(() => {
-    a ? playSoundtrack() : pause();
-  }, [a, playSoundtrack, pause]);
+    quizLocation ? playSoundtrack() : pause();
+  }, [quizLocation, playSoundtrack, pause]);
 
   const handleOptionClick = selectedOption => {
     if (selectedOption === question.correctAnswer) {
       playCorrect();
       setPoints(points + 1000);
+      setUserCorrectAnswers(userCorrectAnswers + 1);
     } else {
       playIncorrect();
       if (points >= 0 && points <= 700) {
@@ -52,6 +55,7 @@ const Answers = ({ questions, soundtrack }) => {
   const resetQuiz = () => {
     setCurrentQuestion(0);
     setPoints(0);
+    setUserCorrectAnswers(0);
   };
 
   const handleTimeout = () => {
@@ -96,8 +100,15 @@ const Answers = ({ questions, soundtrack }) => {
           </button>
         </>
       ) : (
-        (playEndRound(),
-        (<ResetBtn onClick={() => resetQuiz()}>Play Again?</ResetBtn>))
+        <>
+          {playEndRound()}
+          <UserFinalScore
+            points={points}
+            userCorrectAnswers={userCorrectAnswers}
+            questions={questions}
+          />
+          <ResetBtn onClick={() => resetQuiz()}>Play Again?</ResetBtn>
+        </>
       )}
     </ContentWrapper>
   );

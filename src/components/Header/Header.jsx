@@ -15,14 +15,13 @@ const Header = () => {
     const stateIsLoggedIn = useSelector(selectIsLoggedIn);
     const stateCurrentUser = useSelector(selectUser);
     const dispatch = useDispatch();
-    console.log(stateIsLoggedIn);
   
     return (
       <Headerbar>
         <nav>
           <HeaderLink to={'/'}>Menu</HeaderLink>
-  
-          <HeaderLink to={'settings'}>Settings</HeaderLink>
+          {stateIsLoggedIn && <HeaderLink to={'settings'}>Settings</HeaderLink>}
+          
         </nav>
         {stateIsLoggedIn ? (
           <CurrentUser>
