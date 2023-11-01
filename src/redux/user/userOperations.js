@@ -56,7 +56,7 @@ export const userLogOut = createAsyncThunk('auth/logout', async () => {
 
 export const updateUserData = createAsyncThunk(
   'users/edit',
-  async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
+  async ({ avatar, name, email, phone, skype}, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.token;
 
@@ -72,7 +72,6 @@ export const updateUserData = createAsyncThunk(
     formData.append('email', email);
     formData.append('phone', phone || '');
     formData.append('skype', skype || '');
-    formData.append('birthday', birthday || '');
 
     try {
       const { data } = await axios.patch('users/edit', formData, {
