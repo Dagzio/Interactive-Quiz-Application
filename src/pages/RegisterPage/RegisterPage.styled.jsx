@@ -17,13 +17,13 @@ export const NameInput = styled.input`
   padding: 8px;
   height: 40px;
   font-size: 16px;
-  border-radius: 3px;
+  border-radius: 4px;
   outline: none;
   margin-bottom: 12px;
   border: none;
   box-shadow: 5px 5px 6px 0px #000000;
   &:focus {
-    border: 2px solid #d88d02;
+    outline: 2px solid #d88d02;
   }
 `;
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser} from '../../redux/selectors';
@@ -10,7 +10,7 @@ const SettingsPage = () => {
 
     const dispatch = useDispatch();
     const stateUser = useSelector(selectUser);
-    const {register, setValue, handleSubmit, formState:{isDirty, isSubmitting, isSubmitSuccessful}, getValues} = useForm({
+    const {register, setValue, handleSubmit,  getValues} = useForm({
       defaultValues: {
         avatar: null,
         name: stateUser.name,
@@ -20,15 +20,23 @@ const SettingsPage = () => {
       }
     });
     
+    useEffect(()=> {
+      setValue('name', stateUser.name);
+      setValue('email', stateUser.email);
+      setValue('phone', stateUser.phone);
+      setValue('skype', stateUser.skype);
+
+      setSelectedImage(stateUser.avatarUrl || null);
+    }, [stateUser, setValue])
 
     const [selectedImage, setSelectedImage] = useState(stateUser.avatarUrl || null) ;
-  // const [isFormDirty, setIsFormDirty] = useState(false);
-  // const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleAvatarUpload = event => {
         const file = event.currentTarget.files[0];
         setValue('avatar', event.currentTarget.files[0]);
-        // setIsFormDirty(true);
+        setIsDirty(true);
         
         if (file) {
           const imageUrl = URL.createObjectURL(file);
@@ -37,22 +45,22 @@ const SettingsPage = () => {
         }
       };
 
-      const onFormSubmit = () => {
+      const onFormSubmit = async () => {
         const formData = getValues();
-        console.log(formData);
         try {
-          // setIsSubmitting(true);
+          setIsSubmitting(true);
           dispatch(updateUserData(formData));
-          // setIsFormDirty(false);
+          setIsDirty(false);
+          setIsSubmitting(false);
         } catch (error) {
           console.log(error.message);
         }
       };
 
-      const handleInputChange = event => {
-        const { name, value } = event.target;
+      const handleInputChange = ({target : {name, value}}) => {
+        console.log(name, value);
         setValue(name, value);
-        // setIsFormDirty(true);
+        setIsDirty(true);
       };
 
       const formatPhoneNumber = value => {
@@ -81,22 +89,19 @@ const SettingsPage = () => {
       const handlePhoneNumberChange = event => {
         const formattedPhoneNumber = formatPhoneNumber(event.target.value);
         setValue('phone', formattedPhoneNumber);
-        // setIsFormDirty(true);
+        setIsDirty(true);
       };
 
     return <UserProfileForm onSubmit={handleSubmit(onFormSubmit)}>
         <StyledAvatar>
-          {selectedImage ? (
+          {selectedImage && (
             <img src={selectedImage} alt="Avatar" />
-          ) : (
-            <AvatarDefault>
-                <use href={icon +'#icon-user'}/>
-            </AvatarDefault>
           )}
         </StyledAvatar>
 
-        <label>
-          <input
+
+        <UserProfileLabel>
+          <UserProfileInput
           {...register('avatar')}
             id="avatar"
             type="file"
@@ -107,7 +112,8 @@ const SettingsPage = () => {
           <AddAvatar>
             <use href={icon + '#icon-plus'}/>
           </AddAvatar>
-        </label>
+        </UserProfileLabel>
+
 
         <UserProfileTitle>{stateUser.name}</UserProfileTitle>
 
@@ -120,22 +126,10 @@ const SettingsPage = () => {
             {...register('name')}
               id="name"
               type="text"
-              placeholder="User Name"
-              value={stateUser.name || ''}
+              placeholder={stateUser.name}
               onChange={handleInputChange}
-            
-            /* {errors.name && touched.name && (
-              <ErrorMessage>{errors.name}</ErrorMessage>
-            )}
-            {errors.name && touched.name ? (
-              <Iconinput>
-                <use href={Icon + '#EmailError'} />
-              </Iconinput>
-            ) : touched.name ? (
-              <Iconinput>
-                <use href={Icon + '#EmailDone'} />
-              </Iconinput>
-            ) : null} */
+
+           
             />
             </UserProfileLabel>
 
@@ -149,23 +143,11 @@ const SettingsPage = () => {
             {...register('email')}
               id="email"
               type="email"
-              placeholder="Email"
-              value={stateUser.email || ''}
+              placeholder={stateUser.email}
+              // value={stateUser.email || ''}
               onChange={handleInputChange}
             />
             </UserProfileLabel>
-            {/* {errors.email && touched.email && (
-              <ErrorMessage>{errors.email}</ErrorMessage>
-            )}
-            {errors.email && touched.email ? (
-              <Iconinput>
-                <use href={Icon + '#EmailError'} />
-              </Iconinput>
-            ) : touched.email ? (
-              <Iconinput>
-                <use href={Icon + '#EmailDone'} />
-              </Iconinput>
-            ) : null} */}
           
           {/*  phone */}
 
@@ -176,24 +158,12 @@ const SettingsPage = () => {
             {...register('phone')}
               id="phone"
               type="tel"
-              placeholder="For example: 38 (012) 345 67 89"
+              placeholder="For example: 12 (345) 678 90 12"
               inputMode="numeric"
-              value={stateUser.phone || ''}
               onChange={handlePhoneNumberChange}
               
             />
-            {/* {errors.phone && touched.phone && (
-              <ErrorMessage>{errors.phone}</ErrorMessage>
-            )}
-            {errors.phone && touched.phone ? (
-              <Iconinput>
-                <use href={Icon + '#EmailError'} />
-              </Iconinput>
-            ) : touched.phone ? (
-              <Iconinput>
-                <use href={Icon + '#EmailDone'} />
-              </Iconinput>
-            ) : null} */}
+
 </UserProfileLabel>
           {/*  skype */}
 
@@ -201,27 +171,16 @@ const SettingsPage = () => {
               Skype
             
             <UserProfileInput
-              placeholder="Add skype number"
+             {...register('skype')}
+              placeholder={stateUser.skype || ''}
               id="skype"
-              name="skype"
-              value={stateUser.skype || ''}
+              // value={stateUser.skype || ''}
               onChange={handleInputChange}
             />
-            {/* {errors.skype && touched.skype && (
-              <ErrorMessage>{errors.skype}</ErrorMessage>
-            )}
-            {errors.skype && touched.skype ? (
-              <Iconinput>
-                <use href={Icon + '#EmailError'} />
-              </Iconinput>
-            ) : touched.skype ? (
-              <Iconinput>
-                <use href={Icon + '#EmailDone'} />
-              </Iconinput>
-            ) : null} */}
+ 
    </UserProfileLabel>
         </Wrapper>
-        <UserProfileBtn disabled={isSubmitting || isDirty || isSubmitSuccessful} type="submit">
+        <UserProfileBtn disabled={isSubmitting || !isDirty} type="submit">
           {isSubmitting ? 'Submitting...' : 'Save changes'}
         </UserProfileBtn>
       </UserProfileForm>

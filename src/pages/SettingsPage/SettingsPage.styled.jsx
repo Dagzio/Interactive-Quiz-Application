@@ -2,38 +2,56 @@ import { NameInput, RegisterLabel } from "pages/RegisterPage/RegisterPage.styled
 import styled from "styled-components";
 
 export const UserProfileForm = styled.form`
+display: flex;
+align-items:center;
+// justify-content:center;
+flex-direction: column;
 `;
 
 export const UserProfileLabel = styled(RegisterLabel)``;
 
-export const UserProfileInput = styled(NameInput)``;
+export const UserProfileInput = styled(NameInput)`
+display: block;
+
+@media (min-width: 768px){
+  min-width:250px;
+  margin-bottom:0;
+}
+`;
 
 export const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 gap: 18px;
+justify-content:center;
 
-@media (min-width: 1440px) {
-  width: 758px;
-  flex-direction: initial;
+
+@media (min-width: 768px) {
+  width: 700px;
+  flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 50px;
-  row-gap: 24px;
+  
+  // column-gap: 50px;
+  // row-gap: 24px;
 }
 `;
 
 export const UserProfileTitle = styled.p`
 font-weight: 700;
 font-size: 14px;
-color:#FFF
+color: #FFF;
+margin-bottom: 16px;
+
+@media (min-width:768px){
+  margin-bottom: 24px;
+}
 `;
 
 export const StyledAvatar = styled.div`
   width: 72px;
   height: 72px;
   position: absolute;
-  left: calc(50% - 36px);
-  top: -36px;
+  top:80px;
   fill: rgba(62, 133, 243, 0.18);
   background-color: white;
   border: 2px solid #3e85f3;
@@ -44,6 +62,7 @@ export const StyledAvatar = styled.div`
     position: static;
     width: 124px;
     height: 124px;
+    margin-bottom: 24px;
   }
 
   @media (min-width: 1440px) {
@@ -61,21 +80,21 @@ export const StyledAvatar = styled.div`
 
 export const AvatarDefault = styled.svg`
   position: absolute;
-  left: calc(50% - 25px);
-  top: 5px;
+  top:57px;
+  left:13%;
   width: 50px;
   height: 50px;
 
   @media (min-width: 768px) {
     left: calc(50% - 47px);
-    top: 45px;
+    top: 208px;
     width: 95px;
     height: 95px;
   }
 
   @media (min-width: 1440px) {
     left: calc(50% - 47px);
-    top: 65px;
+    top: 34%;
     width: 95px;
     height: 95px;
   }
@@ -83,30 +102,35 @@ export const AvatarDefault = styled.svg`
 
 export const AddAvatar = styled.svg`
   position: absolute;
-  left: 53%;
-  top: 28px;
-  width: 14px;
-  height: 14px;
+  top: 134px;
+  left: 55%;
+  width: 24px;
+  height: 24px;
   font-size: 12px;
   cursor: pointer;
+  fill: #3e85f3;
+  transform: translateX(-5%);
+
+  @media (min-width:480px){
+    left:53%;
+  }
 
   @media (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 147px;
-    left: 52%;
+    top: 310px;
+    left: calc(52% + 5px);
+  }
+
+  @media (min-width:1200px){
+    left:52% ;
   }
 
   @media (min-width: 1440px) {
-    top: 170px;
-    left: 51%;
+    top: calc(44% + 5px);
+    left: calc(51% + 10px);
   }
 `;
 
 export const UserProfileBtn = styled.button`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
   padding: 14px 50px;
   width: 195px;
   height: 46px;
@@ -130,9 +154,5 @@ export const UserProfileBtn = styled.button`
   @media (min-width: 768px) {
     width: 262px;
     height: 48px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-top: 88px;
   }
 `;

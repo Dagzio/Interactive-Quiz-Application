@@ -38,3 +38,7 @@ export const userHandleSignUpFulfilled = (state, { payload }) => {
     state.token = null;
     state.user = null;
   };
+
+  export const userHandleUpdateDataFulfilled = () => {
+    Notify.success('Your info has been successfuly updated!');
+  };
