@@ -53,3 +53,37 @@ export const userLogOut = createAsyncThunk('auth/logout', async () => {
   clearToken();
   return result;
 });
+
+export const updateUserData = createAsyncThunk(
+  'users/edit',
+  async ({ avatar, name, email, phone, skype, birthday }, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+   setToken(persistedToken);
+
+    const formData = new FormData();
+    formData.append('avatarUrl', avatar);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone || '');
+    formData.append('skype', skype || '');
+    formData.append('birthday', birthday || '');
+
+    try {
+      const { data } = await axios.patch('users/edit', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return data;
+    }
+      catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

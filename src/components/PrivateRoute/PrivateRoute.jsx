@@ -1,0 +1,13 @@
+import { useSelector } from "react-redux";
+import { Navigate, useLocation } from "react-router-dom";
+import { selectToken } from "redux/selectors";
+
+
+const PrivateRoute = ({ children }) => {
+  const userIsLoggedIn = useSelector(selectToken);
+  const location = useLocation();
+  
+  return userIsLoggedIn ? children : <Navigate to="/login" state={location} />;
+};
+
+export default PrivateRoute;

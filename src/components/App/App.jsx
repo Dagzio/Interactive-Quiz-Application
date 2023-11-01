@@ -1,5 +1,8 @@
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
+import PublicRoute from 'components/PublicRoute/PublicRoute';
 import Quiz from 'components/Quiz/Quiz';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
+import SettingsPage from 'pages/SettingsPage/SettingsPage';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -24,7 +27,9 @@ const App = () => {
           path="register"
           element={
             <Suspense>
+              <PublicRoute>
               <RegisterPage />
+              </PublicRoute>
             </Suspense>
           }
         />
@@ -32,7 +37,9 @@ const App = () => {
           path="login"
           element={
             <Suspense>
+              <PublicRoute>
               <LoginPage />
+              </PublicRoute>
             </Suspense>
           }
         />
@@ -41,11 +48,25 @@ const App = () => {
           path="quiz/:quizType"
           element={
             <Suspense>
+              <PublicRoute>
               <Quiz />
+              </PublicRoute>
             </Suspense>
           }
         />
-      </Route>
+      
+
+      <Route
+       path="settings"
+       element={
+        <Suspense>
+          <PrivateRoute>
+              <SettingsPage />
+              </PrivateRoute>
+            </Suspense>
+       }
+       />
+       </Route>
     </Routes>
   );
 };

@@ -6,7 +6,6 @@ const userInitialState = {
     phone: null,
     skype: null,
     name: null,
-    birthday: null,
   },
   token: '',
   isLoggedIn: false,
