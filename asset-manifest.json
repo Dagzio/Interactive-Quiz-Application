@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Interactive-Quiz-Application/static/css/main.021f25a8.css",
-    "main.js": "/Interactive-Quiz-Application/static/js/main.5c4fbf96.js",
-    "static/js/215.26ffc33f.chunk.js": "/Interactive-Quiz-Application/static/js/215.26ffc33f.chunk.js",
+    "main.js": "/Interactive-Quiz-Application/static/js/main.bea3d2da.js",
+    "static/js/215.c0577161.chunk.js": "/Interactive-Quiz-Application/static/js/215.c0577161.chunk.js",
     "static/js/168.c7efb31b.chunk.js": "/Interactive-Quiz-Application/static/js/168.c7efb31b.chunk.js",
     "static/js/589.4f74a9e4.chunk.js": "/Interactive-Quiz-Application/static/js/589.4f74a9e4.chunk.js",
     "static/js/845.e7580b83.chunk.js": "/Interactive-Quiz-Application/static/js/845.e7580b83.chunk.js",
@@ -12,11 +12,11 @@
     "static/media/end.mp3": "/Interactive-Quiz-Application/static/media/end.a201aa7355fc29ad3fc8.mp3",
     "static/media/incorrect.mp3": "/Interactive-Quiz-Application/static/media/incorrect.72e30d01ea484110702c.mp3",
     "static/media/correct.mp3": "/Interactive-Quiz-Application/static/media/correct.91a24ab0c8b8f76a8bf5.mp3",
-    "static/media/symbol-defs.svg": "/Interactive-Quiz-Application/static/media/symbol-defs.37665e7d80dedf93ec8e8ddbf04934d0.svg",
+    "static/media/symbol-defs.svg": "/Interactive-Quiz-Application/static/media/symbol-defs.f3490e4912ea03c23541a93b0a46337e.svg",
     "index.html": "/Interactive-Quiz-Application/index.html",
     "main.021f25a8.css.map": "/Interactive-Quiz-Application/static/css/main.021f25a8.css.map",
-    "main.5c4fbf96.js.map": "/Interactive-Quiz-Application/static/js/main.5c4fbf96.js.map",
-    "215.26ffc33f.chunk.js.map": "/Interactive-Quiz-Application/static/js/215.26ffc33f.chunk.js.map",
+    "main.bea3d2da.js.map": "/Interactive-Quiz-Application/static/js/main.bea3d2da.js.map",
+    "215.c0577161.chunk.js.map": "/Interactive-Quiz-Application/static/js/215.c0577161.chunk.js.map",
     "168.c7efb31b.chunk.js.map": "/Interactive-Quiz-Application/static/js/168.c7efb31b.chunk.js.map",
     "589.4f74a9e4.chunk.js.map": "/Interactive-Quiz-Application/static/js/589.4f74a9e4.chunk.js.map",
     "845.e7580b83.chunk.js.map": "/Interactive-Quiz-Application/static/js/845.e7580b83.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.021f25a8.css",
-    "static/js/main.5c4fbf96.js"
+    "static/js/main.bea3d2da.js"
   ]
 }
