@@ -4,11 +4,10 @@ import PublicRoute from 'components/PublicRoute/PublicRoute';
 import Quiz from 'components/Quiz/Quiz';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import SettingsPage from 'pages/SettingsPage/SettingsPage';
-import { Suspense, lazy, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Suspense, lazy } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { selectIsLoading, selectToken, selectUser } from 'redux/selectors';
-import { getCurrentUser, setToken } from 'redux/user/userOperations';
+import { selectIsLoading } from 'redux/selectors';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() =>
@@ -17,16 +16,7 @@ const RegisterPage = lazy(() =>
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 
 const App = () => {
-  // const userToken = useSelector(selectToken);
   const isLoading = useSelector(selectIsLoading);
-  // const stateUser = useSelector(selectUser);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (userToken && !stateUser?._id) {
-
-  //   }
-  // }, [dispatch, stateUser?._id, userToken]);
 
   return isLoading ? (
     <Loader />
