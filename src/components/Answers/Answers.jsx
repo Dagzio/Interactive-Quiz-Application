@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import useSound from 'use-sound';
 import Question from '../Question/Question';
 import Timer from '../Timer/Timer';
@@ -10,8 +11,9 @@ import {
   AnswerBtn,
   ListItem,
   ResetBtn,
+  VolumeBtn,
 } from './Answers.styled';
-import { useLocation } from 'react-router-dom';
+import icon from '../../img/symbol-defs.svg';
 import UserFinalScore from 'components/UserFinalScore/UserFInalScore';
 
 const colors = ['#3393d3', '#d84636', '#2ecc71', '#f39c12'];
@@ -20,6 +22,7 @@ const Answers = ({ questions, soundtrack }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [points, setPoints] = useState(0);
   const [userCorrectAnswers, setUserCorrectAnswers] = useState(0);
+  const [isPlayAudio, setIsPlayAudio] = useState(true);
   const question = questions[currentQuestion];
 
   const location = useLocation();
@@ -35,7 +38,7 @@ const Answers = ({ questions, soundtrack }) => {
     quizLocation ? playSoundtrack() : stop();
     return () => {
       stop();
-    }
+    };
   }, [quizLocation, playSoundtrack, stop]);
 
   const handleOptionClick = selectedOption => {
@@ -71,6 +74,13 @@ const Answers = ({ questions, soundtrack }) => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
+  const toggleAudioPlay = () => {
+    setIsPlayAudio(!isPlayAudio);
+    stop();
+
+    !isPlayAudio && playSoundtrack();
+  };
+
   return (
     <ContentWrapper>
       {currentQuestion < questions.length ? (
@@ -98,9 +108,15 @@ const Answers = ({ questions, soundtrack }) => {
           </ButtonList>
 
           <UserPoints points={points} />
-          <button type="button" onClick={() => stop()}>
-            STOP
-          </button>
+          {isPlayAudio ? (
+            <VolumeBtn onClick={toggleAudioPlay}>
+              <use href={icon + '#volume'} />
+            </VolumeBtn>
+          ) : (
+            <VolumeBtn onClick={toggleAudioPlay}>
+              <use href={icon + '#volume-mute'} />
+            </VolumeBtn>
+          )}
         </>
       ) : (
         <>

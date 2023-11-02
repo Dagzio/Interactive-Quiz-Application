@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { HeaderAuthButtons, HeaderLogIn, HeaderSignUp } from './Navigation.styled';
+import {
+  HeaderAuthButtons,
+  HeaderLogIn,
+  HeaderSignUp,
+} from './Navigation.styled';
 
 const Navigation = () => {
   const navigate = useNavigate();

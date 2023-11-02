@@ -44,6 +44,13 @@ export const AnswerBtn = styled.button`
   }
 `;
 
+export const VolumeBtn = styled.svg`
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  fill: #fff;
+`;
+
 export const ResetBtn = styled(AnswerBtn)`
   width: 220px;
   height: 120px;

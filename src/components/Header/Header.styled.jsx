@@ -18,31 +18,39 @@ export const Headerbar = styled.header`
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-    @media (min-width:768px){
-      margin-bottom:24px;
-    }
+  @media (min-width: 768px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const HeaderLink = styled(NavLink)`
   text-decoration: none;
+  padding: 8px;
   color: #000;
   font-weight: 600;
   &:first-child {
-    margin-right: 12px;
+    margin-right: 8px;
   }
   &.active {
     color: #d88d02;
+  }
+
+  @media (min-width: 480px) {
+    margin-right: 12px;
   }
 `;
 
 export const CurrentUser = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const UserName = styled.p`
-  margin-right: 4px;
   font-weight: 600;
-  margin-right: 12px;
+  text-align: center;
+  @media (min-width: 480px) {
+    margin-right: 12px;
+  }
 `;
 
 export const LogOut = styled.button`
