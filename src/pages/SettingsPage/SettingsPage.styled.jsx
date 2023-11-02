@@ -12,10 +12,11 @@ export const UserProfileLabel = styled(RegisterLabel)``;
 
 export const UserProfileInput = styled(NameInput)`
 display: block;
-
+margin-bottom:0;
+min-width:270px;
 @media (min-width: 768px){
-  min-width:250px;
-  margin-bottom:0;
+  min-width:270px;
+  
 }
 `;
 
@@ -24,6 +25,7 @@ display: flex;
 flex-direction: column;
 gap: 18px;
 justify-content:center;
+margin-bottom: 36px;
 
 
 @media (min-width: 768px) {
@@ -62,18 +64,13 @@ export const StyledAvatar = styled.div`
     position: static;
     width: 124px;
     height: 124px;
-    margin-bottom: 24px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     border-radius: 50%;
   }
 `;
@@ -125,7 +122,7 @@ export const AddAvatar = styled.svg`
   }
 
   @media (min-width: 1440px) {
-    top: calc(44% + 5px);
+    top: 43%;
     left: calc(51% + 10px);
   }
 `;

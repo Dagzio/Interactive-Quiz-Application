@@ -7,7 +7,7 @@ const PublicRoute = ({ children }) => {
     const userIsLoggedIn = useSelector(selectToken);
     const location = useLocation();
 
-    return !userIsLoggedIn ? children : <Navigate to={location.state ?? '/settings'} />;
+    return !userIsLoggedIn ? children : <Navigate to={location.state ?? '/'} />;
   };
   
 export default PublicRoute;

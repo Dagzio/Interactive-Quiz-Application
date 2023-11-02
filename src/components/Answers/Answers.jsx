@@ -29,11 +29,14 @@ const Answers = ({ questions, soundtrack }) => {
   const [playCorrect] = useSound(correct);
   const [playIncorrect] = useSound(incorrect);
   const [playEndRound] = useSound(end);
-  const [playSoundtrack, { pause }] = useSound(soundtrack);
+  const [playSoundtrack, { stop }] = useSound(soundtrack);
 
   useEffect(() => {
-    quizLocation ? playSoundtrack() : pause();
-  }, [quizLocation, playSoundtrack, pause]);
+    quizLocation ? playSoundtrack() : stop();
+    return () => {
+      stop();
+    }
+  }, [quizLocation, playSoundtrack, stop]);
 
   const handleOptionClick = selectedOption => {
     if (selectedOption === question.correctAnswer) {
@@ -95,7 +98,7 @@ const Answers = ({ questions, soundtrack }) => {
           </ButtonList>
 
           <UserPoints points={points} />
-          <button type="button" onClick={() => pause()}>
+          <button type="button" onClick={() => stop()}>
             STOP
           </button>
         </>

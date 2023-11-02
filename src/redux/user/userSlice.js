@@ -26,10 +26,14 @@ const userSlice = createSlice({
       .addCase(userRegister.pending, userHandlePending)
       .addCase(userRegister.fulfilled, userHandleSignUpFulfilled)
       .addCase(userRegister.rejected, userHandleSignUpRejected)
+      .addCase(userLogIn.pending, userHandlePending)
       .addCase(userLogIn.fulfilled, userHandleLogInFulfilled)
       .addCase(userLogIn.rejected, userHandleLogInRejected)
+      .addCase(getCurrentUser.pending, userHandlePending)
       .addCase(getCurrentUser.fulfilled, userHandleGetUserFulfilled)
+      .addCase(userLogOut.pending, userHandlePending)
       .addCase(userLogOut.fulfilled, userLogOutFulfilled)
+      .addCase(updateUserData.pending, userHandlePending)
       .addCase(updateUserData.fulfilled, userHandleUpdateDataFulfilled)
   },
 });

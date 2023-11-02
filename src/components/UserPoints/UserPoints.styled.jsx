@@ -3,9 +3,6 @@ import styled from "styled-components";
 
 
 export const PointsWrapper = styled.div`
-// position: absolute;
-// bottom: 28px;
-// right: 108px;
 width: 100px;
 margin: 0 auto;
 text-align: center;

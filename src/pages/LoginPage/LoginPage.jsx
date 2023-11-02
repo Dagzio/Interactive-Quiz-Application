@@ -56,7 +56,7 @@ const LoginPage = () => {
           value={email}
           id="userEmail"
           required
-        ></LogInInput>
+        />
       </LogInLabel>
 
       <LogInLabel>
@@ -68,7 +68,7 @@ const LoginPage = () => {
           value={password}
           id="userPassword"
           required
-        ></LogInPasswordInput>
+        />
       </LogInLabel>
 
       <LogIn type="submit">Log In</LogIn>
