@@ -33,7 +33,7 @@ export const getCurrentUser = createAsyncThunk(
       const response = await axios.get('users/current');
       return response;
     } catch (error) {
-      dispatch(userLogOut());
+      // dispatch(userLogOut());
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -56,7 +56,7 @@ export const userLogOut = createAsyncThunk('auth/logout', async () => {
 
 export const updateUserData = createAsyncThunk(
   'users/edit',
-  async ({ avatar, name, email, phone, skype}, thunkAPI) => {
+  async ({ avatar, name, email, phone, skype }, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.token;
 
@@ -64,7 +64,7 @@ export const updateUserData = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
 
-   setToken(persistedToken);
+    setToken(persistedToken);
 
     const formData = new FormData();
     formData.append('avatarUrl', avatar);
@@ -80,8 +80,7 @@ export const updateUserData = createAsyncThunk(
         },
       });
       return data;
-    }
-      catch (error) {
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }

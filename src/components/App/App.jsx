@@ -7,29 +7,30 @@ import SettingsPage from 'pages/SettingsPage/SettingsPage';
 import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { selectIsLoading, selectToken} from 'redux/selectors';
-import { getCurrentUser } from 'redux/user/userOperations';
+import { selectIsLoading, selectToken, selectUser } from 'redux/selectors';
+import { getCurrentUser, setToken } from 'redux/user/userOperations';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
-const RegisterPage = lazy(() => import('../../pages/RegisterPage/RegisterPage'));
+const RegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage')
+);
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 
 const App = () => {
-
-  const userToken = useSelector(selectToken);
+  // const userToken = useSelector(selectToken);
   const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+  // const stateUser = useSelector(selectUser);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-      if(userToken) {
-        dispatch(getCurrentUser());
-      }
-  }, [dispatch, userToken]);
+  // useEffect(() => {
+  //   if (userToken && !stateUser?._id) {
 
+  //   }
+  // }, [dispatch, stateUser?._id, userToken]);
 
   return isLoading ? (
-      <Loader />
-    ) : (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route
@@ -46,7 +47,7 @@ const App = () => {
           element={
             <Suspense>
               <PublicRoute>
-              <RegisterPage />
+                <RegisterPage />
               </PublicRoute>
             </Suspense>
           }
@@ -56,7 +57,7 @@ const App = () => {
           element={
             <Suspense>
               <PublicRoute>
-              <LoginPage />
+                <LoginPage />
               </PublicRoute>
             </Suspense>
           }
@@ -70,19 +71,18 @@ const App = () => {
             </Suspense>
           }
         />
-      
 
-      <Route
-       path="settings"
-       element={
-        <Suspense>
-          <PrivateRoute>
-              <SettingsPage />
+        <Route
+          path="settings"
+          element={
+            <Suspense>
+              <PrivateRoute>
+                <SettingsPage />
               </PrivateRoute>
             </Suspense>
-       }
-       />
-       </Route>
+          }
+        />
+      </Route>
     </Routes>
   );
 };
