@@ -12,7 +12,7 @@ export const HeaderAuthButtons = styled.div`
 
 export const HeaderSignUp = styled(LogOut)`
   margin-bottom: 4px;
-
+  margin-right: 8px;
 
   @media (min-width: 480px){
     margin-bottom: 0;

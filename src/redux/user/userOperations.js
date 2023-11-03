@@ -28,12 +28,11 @@ export const userRegister = createAsyncThunk(
 
 export const getCurrentUser = createAsyncThunk(
   'users/current',
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('users/current');
       return response;
     } catch (error) {
-      // dispatch(userLogOut());
       return rejectWithValue(error.response.data.message);
     }
   }
