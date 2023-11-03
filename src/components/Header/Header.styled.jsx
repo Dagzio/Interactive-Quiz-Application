@@ -47,6 +47,11 @@ export const CurrentUser = styled.div`
 export const UserName = styled.p`
   font-weight: 600;
   text-align: center;
+
+    
+  @media (min-width:378px) and (max-width:479px){
+    margin-right:8px;
+  }
   @media (min-width: 480px) {
     margin-right: 12px;
   }
