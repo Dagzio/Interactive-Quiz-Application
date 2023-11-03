@@ -38,12 +38,10 @@ export const AnswerBtn = styled.button`
   border-radius: 8px;
   cursor: pointer;
   text-shadow: 1px 1px 1px #000000;
-  
 
   &:active {
     box-shadow: inset 0px 1px 8px 0px rgba(48, 48, 48, 1);
   }
-
 `;
 
 export const VolumeBtn = styled.svg`
@@ -63,7 +61,7 @@ export const ResetBtn = styled(AnswerBtn)`
   &:active {
     box-shadow: inset 0px 1px 8px 0px rgba(48, 48, 48, 1);
   }
-  &:hover{
+  &:hover {
     background-color: #646262;
   }
 `;

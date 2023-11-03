@@ -1,21 +1,18 @@
 import {
-    NameInput,
-    PasswordInput,
-    RegisterForm,
-    RegisterLabel,
-    SignUp,
-  } from 'pages/RegisterPage/RegisterPage.styled';
-  import { styled } from 'styled-components';
-  
-  export const LogInForm = styled(RegisterForm)``;
+  NameInput,
+  PasswordInput,
+  RegisterForm,
+  RegisterLabel,
+  SignUp,
+} from 'pages/RegisterPage/RegisterPage.styled';
+import { styled } from 'styled-components';
 
-  export const LogInLabel = styled(RegisterLabel)`
-  `;
+export const LogInForm = styled(RegisterForm)``;
 
-  export const LogInInput = styled(NameInput)`
-  `;
+export const LogInLabel = styled(RegisterLabel)``;
 
-  export const LogInPasswordInput = styled(PasswordInput)``;
-  
-  
-  export const LogIn = styled(SignUp)``;
+export const LogInInput = styled(NameInput)``;
+
+export const LogInPasswordInput = styled(PasswordInput)``;
+
+export const LogIn = styled(SignUp)``;

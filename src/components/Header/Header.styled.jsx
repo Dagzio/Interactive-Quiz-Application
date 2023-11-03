@@ -11,7 +11,6 @@ export const Headerbar = styled.header`
   height: 64px;
   max-width: 100vw;
   margin: 0 auto;
-  // margin-bottom: 24px;
   padding: 12px 24px;
   z-index: 1100;
   background-color: #fff;

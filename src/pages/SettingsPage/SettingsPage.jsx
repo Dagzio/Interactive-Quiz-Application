@@ -76,7 +76,6 @@ const SettingsPage = () => {
   };
 
   const handleInputChange = ({ target: { name, value } }) => {
-    console.log(name, value);
     setValue(name, value);
     setIsDirty(true);
   };
@@ -88,7 +87,6 @@ const SettingsPage = () => {
 
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl);
       setSelectedImage(imageUrl);
     }
   };

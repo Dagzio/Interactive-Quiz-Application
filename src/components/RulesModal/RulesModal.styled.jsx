@@ -1,27 +1,27 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Backdrop = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1a1f25;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: scroll;
-`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1f25;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: scroll;
+`;
 
 export const Overlay = styled.div`
-     z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-`
-
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+`;
 
 const fadeIn = keyframes`
 0% {
@@ -36,107 +36,105 @@ const fadeIn = keyframes`
 }
 `;
 
-
 export const ModalWindow = styled.div`
-  width: 303px;  
-  height: 570px; 
+  width: 303px;
+  height: 570px;
   padding: 12px 16px;
   text-align: center;
   position: absolute;
-  top:50%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);    
+  transform: translate(-50%, -50%);
   border: none;
-  outline: 5px solid #FFF;
+  outline: 5px solid #fff;
   background-color: #1a1f25;
   box-shadow: 0px 4px 16px 0px rgb(191 122 18 / 72%);
-  border-radius: 8px;   
- 
-  animation: ${fadeIn} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  border-radius: 8px;
 
-  @media (min-width: 480px){
-    width: 353px;  
+  animation: ${fadeIn} 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  @media (min-width: 480px) {
+    width: 353px;
     height: 516px;
-  };
+  }
 
-  @media (min-width: 768px){
-    width: 657px; 
+  @media (min-width: 768px) {
+    width: 657px;
     height: 355px;
   }
-  `;
+`;
 
-
-  export const RulesModalTitle = styled.h2`
+export const RulesModalTitle = styled.h2`
   text-shadow: 2px 3px 3px #000000;
-  color:#FFF;
+  color: #fff;
   margin-bottom: 8px;
-  `;
+`;
 
-  export const RulesModalList = styled.ol`
+export const RulesModalList = styled.ol`
   padding: 0 16px;
   margin: 0;
-  text-align:left;
+  text-align: left;
   font-weight: 700;
-  font-size:18px;
-  color: #FFF;
+  font-size: 18px;
+  color: #fff;
   text-shadow: 2px 3px 3px #000000;
-  `;
+`;
 
-  export const RulesModalListText = styled.li`
+export const RulesModalListText = styled.li`
+  font-size: 20px;
 
-  font-size:20px;
-
-  &:last-child{
+  &:last-child {
     margin-bottom: 24px;
   }
-  `;
+`;
 
-  export const RulesModalText = styled.p`
+export const RulesModalText = styled.p`
   margin-bottom: 12px;
-  text-align:center;
+  text-align: center;
   text-shadow: 0 0 10px #0aafe6, 0 0 15px rgba(10, 175, 230, 0);
-  color:#c2f0f7;
+  color: #c2f0f7;
 
-  &:last-child{
+  &:last-child {
     margin-bottom: 18px;
   }
 
-  @media (min-width: 480px){
-    &:last-child{
+  @media (min-width: 480px) {
+    &:last-child {
       margin-bottom: 24px;
     }
   }
-  `;
+`;
 
-  export const RulesModalLabel = styled.label`
+export const RulesModalLabel = styled.label`
   margin-right: 24px;
   text-shadow: 2px 3px 3px #000000;
-  color:#FFF;
+  color: #fff;
   margin-bottom: 16px;
-  `;
+`;
 
-  export const RulesModalBtn = styled.button`
+export const RulesModalBtn = styled.button`
   width: 140px;
   height: 33px;
   border-radius: 4px;
   border: none;
   box-shadow: 9px 8px 15px 0px rgba(0, 0, 0, 0.64);
-  cursor:pointer;
+  cursor: pointer;
   font-weight: 700;
   font-size: 15px;
-  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1),  color 350ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-  &:hover{
+  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
     background-color: #4747ff;
-    color:#FFF;
+    color: #fff;
   }
   &:active {
     box-shadow: inset 0px 1px 8px 0px rgba(48, 48, 48, 1);
   }
-  `;
+`;
 
-  export const WrapperBtn = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  `;
+export const WrapperBtn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

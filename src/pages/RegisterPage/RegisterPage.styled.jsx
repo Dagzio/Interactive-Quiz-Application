@@ -9,7 +9,6 @@ export const RegisterLabel = styled.label`
   font-weight: 600;
   font-size: 16px;
   color: #ffffff;
-
 `;
 
 export const NameInput = styled.input`
@@ -30,7 +29,7 @@ export const NameInput = styled.input`
 export const EmailInput = styled(NameInput)``;
 
 export const PasswordInput = styled(NameInput)`
-margin-bottom: 28px;
+  margin-bottom: 28px;
 `;
 
 export const SignUp = styled.button`
@@ -54,4 +53,3 @@ export const SignUp = styled.button`
     box-shadow: inset 14px 14px 10px -6px rgba(0, 0, 0, 0.47);
   }
 `;
-

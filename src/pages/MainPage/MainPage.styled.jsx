@@ -1,6 +1,6 @@
-import { ListItem } from 'components/Answers/Answers.styled';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { ListItem } from 'components/Answers/Answers.styled';
 
 export const MainPageWrapper = styled.div`
   display: flex;
@@ -73,7 +73,14 @@ export const MainPageHPQuiz = styled(NavLink)`
   font-size: 26px;
   font-weight: 700;
   color: #fff;
-  background: radial-gradient( circle, #ffa700 6%, #fb7e00 48%, #c50000 84%, #890000 94%, #5c0000 100% );
+  background: radial-gradient(
+    circle,
+    #ffa700 6%,
+    #fb7e00 48%,
+    #c50000 84%,
+    #890000 94%,
+    #5c0000 100%
+  );
   box-shadow: 9px 8px 15px 0px rgba(0, 0, 0, 0.64);
   text-decoration: none;
   border: transparent;
@@ -81,7 +88,6 @@ export const MainPageHPQuiz = styled(NavLink)`
   border-radius: 8px;
   cursor: pointer;
   text-shadow: 1px 1px 1px #000000;
-
 
   &:active {
     box-shadow: inset 0px 1px 8px 0px rgba(48, 48, 48, 1);
@@ -96,8 +102,6 @@ export const MainPageHPQuiz = styled(NavLink)`
       rgba(92, 0, 0, 0.4) 100%
     );
   }
-
-  
 `;
 
 export const MainPageSMQuiz = styled(MainPageHPQuiz)`

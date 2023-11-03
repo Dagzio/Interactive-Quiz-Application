@@ -1,59 +1,56 @@
-import { NameInput, RegisterLabel } from "pages/RegisterPage/RegisterPage.styled";
-import styled from "styled-components";
+import styled from 'styled-components';
+import {
+  NameInput,
+  RegisterLabel,
+} from 'pages/RegisterPage/RegisterPage.styled';
 
 export const UserProfileForm = styled.form`
-display: flex;
-align-items:center;
-// justify-content:center;
-flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const UserProfileLabel = styled(RegisterLabel)``;
 
 export const UserProfileInput = styled(NameInput)`
-display: block;
-margin-bottom:0;
-min-width:270px;
-@media (min-width: 768px){
-  min-width:270px;
-  
-}
+  display: block;
+  margin-bottom: 0;
+  min-width: 270px;
+  @media (min-width: 768px) {
+    min-width: 270px;
+  }
 `;
 
 export const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-gap: 18px;
-justify-content:center;
-margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 36px;
 
-
-@media (min-width: 768px) {
-  width: 700px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  
-  // column-gap: 50px;
-  // row-gap: 24px;
-}
+  @media (min-width: 768px) {
+    width: 700px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 export const UserProfileTitle = styled.p`
-font-weight: 700;
-font-size: 14px;
-color: #FFF;
-margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 16px;
 
-@media (min-width:768px){
-  margin-bottom: 24px;
-}
+  @media (min-width: 768px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const StyledAvatar = styled.div`
   width: 72px;
   height: 72px;
   position: absolute;
-  top:80px;
+  top: 80px;
   fill: rgba(62, 133, 243, 0.18);
   background-color: white;
   border: 2px solid #3e85f3;
@@ -77,8 +74,8 @@ export const StyledAvatar = styled.div`
 
 export const AvatarDefault = styled.svg`
   position: absolute;
-  top:57px;
-  left:13%;
+  top: 57px;
+  left: 13%;
   width: 50px;
   height: 50px;
 
@@ -108,8 +105,8 @@ export const AddAvatar = styled.svg`
   fill: #3e85f3;
   transform: translateX(-5%);
 
-  @media (min-width:480px){
-    left:53%;
+  @media (min-width: 480px) {
+    left: 53%;
   }
 
   @media (min-width: 768px) {
@@ -117,8 +114,8 @@ export const AddAvatar = styled.svg`
     left: calc(52% + 5px);
   }
 
-  @media (min-width:1200px){
-    left:52% ;
+  @media (min-width: 1200px) {
+    left: 52%;
   }
 
   @media (min-width: 1440px) {
@@ -136,7 +133,6 @@ export const UserProfileBtn = styled.button`
 
   text-align: center;
 
-  
   border-radius: 16px;
   border: none;
 
@@ -144,7 +140,7 @@ export const UserProfileBtn = styled.button`
 
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    color: #FFF;
+    color: #fff;
     background-color: blue;
   }
 
