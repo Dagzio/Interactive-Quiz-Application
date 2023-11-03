@@ -14,7 +14,7 @@ import {
   userHandleGetUserFulfilled,
   userLogOutFulfilled,
   userHandlePending,
-  userHandleUpdateDataFulfilled
+  userHandleUpdateDataFulfilled,
 } from '../handleFunctions';
 import userInitialState from './userInitialState';
 
@@ -34,7 +34,7 @@ const userSlice = createSlice({
       .addCase(userLogOut.pending, userHandlePending)
       .addCase(userLogOut.fulfilled, userLogOutFulfilled)
       .addCase(updateUserData.pending, userHandlePending)
-      .addCase(updateUserData.fulfilled, userHandleUpdateDataFulfilled)
+      .addCase(updateUserData.fulfilled, userHandleUpdateDataFulfilled);
   },
 });
 

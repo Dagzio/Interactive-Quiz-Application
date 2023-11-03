@@ -19,21 +19,24 @@ import UserFinalScore from 'components/UserFinalScore/UserFInalScore';
 const colors = ['#3393d3', '#d84636', '#2ecc71', '#f39c12'];
 
 const Answers = ({ questions, soundtrack }) => {
+
+  //LOCAL STATE
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [points, setPoints] = useState(0);
   const [userCorrectAnswers, setUserCorrectAnswers] = useState(0);
   const [isPlayAudio, setIsPlayAudio] = useState(true);
+
   const question = questions[currentQuestion];
-
   const location = useLocation();
-
   const quizLocation = location.pathname.indexOf('/quiz/') === 0;
 
+  //SOUNDS
   const [playCorrect] = useSound(correct);
   const [playIncorrect] = useSound(incorrect);
   const [playEndRound] = useSound(end);
   const [playSoundtrack, { stop }] = useSound(soundtrack);
 
+  //ON RENDER COMPONENT
   useEffect(() => {
     quizLocation ? playSoundtrack() : stop();
     return () => {
@@ -41,6 +44,7 @@ const Answers = ({ questions, soundtrack }) => {
     };
   }, [quizLocation, playSoundtrack, stop]);
 
+  //FUNCTIONS
   const handleOptionClick = selectedOption => {
     if (selectedOption === question.correctAnswer) {
       playCorrect();
@@ -48,11 +52,7 @@ const Answers = ({ questions, soundtrack }) => {
       setUserCorrectAnswers(userCorrectAnswers + 1);
     } else {
       playIncorrect();
-      if (points >= 0 && points <= 700) {
-        setPoints(0);
-      } else {
-        setPoints(points - 700);
-      }
+      points >= 0 && points <= 700 ? setPoints(0) : setPoints(points - 700);
     }
 
     setCurrentQuestion(currentQuestion + 1);
@@ -65,11 +65,7 @@ const Answers = ({ questions, soundtrack }) => {
   };
 
   const handleTimeout = () => {
-    if (points >= 0 && points <= 500) {
-      setPoints(0);
-    } else {
-      setPoints(points - 500);
-    }
+    points >= 0 && points <= 500 ? setPoints(0) : setPoints(points - 500);
     playIncorrect();
     setCurrentQuestion(currentQuestion + 1);
   };

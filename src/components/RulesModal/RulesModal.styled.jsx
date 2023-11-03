@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const Backdrop = styled.div`
     position: fixed;
@@ -22,6 +22,21 @@ export const Overlay = styled.div`
     justify-content: center;
 `
 
+
+const fadeIn = keyframes`
+0% {
+  transform: translateY(-600px) rotateX(-10deg) scale(0);
+  transform-origin: -50% ;
+  opacity: 0;
+}
+100% {
+  transform: translateY(600) rotateX(10) scale(1);
+  transform-origin: 50% 1440px;
+  opacity: 1;
+}
+`;
+
+
 export const ModalWindow = styled.div`
   width: 303px;  
   height: 570px; 
@@ -37,7 +52,7 @@ export const ModalWindow = styled.div`
   box-shadow: 0px 4px 16px 0px rgb(191 122 18 / 72%);
   border-radius: 8px;   
  
-
+  animation: ${fadeIn} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 
   @media (min-width: 480px){
     width: 353px;  
@@ -109,6 +124,7 @@ export const ModalWindow = styled.div`
   cursor:pointer;
   font-weight: 700;
   font-size: 15px;
+  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1),  color 350ms cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover{
     background-color: #4747ff;

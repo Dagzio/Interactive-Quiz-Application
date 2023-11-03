@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector,} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {string, object} from 'yup';
+import { string, object } from 'yup';
+import { userError } from 'redux/selectors';
 import { userRegister } from '../../redux/user/userOperations';
 import {
   RegisterLabel,
@@ -13,29 +14,47 @@ import {
   PasswordInput,
 } from './RegisterPage.styled';
 import { Notify } from 'notiflix';
-import { userError } from 'redux/selectors';
 
+//VALIDATION SCHEMA
 const RegisterSchema = object({
-    name: string().min(3, 'Name must be at least 3 characters').required('Name is required'),
-    email: string().email('Please write a correct email').required('Email is required'),
-    password: string().min(6).matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+  name: string()
+    .min(3, 'Name must be at least 3 characters')
+    .required('Name is required'),
+  email: string()
+    .email('Please write a correct email')
+    .required('Email is required'),
+  password: string()
+    .min(6)
+    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
     .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .matches(/[0-9]/, 'Password must contain at least one number').required('Password is required'),
-  });
-  
+    .matches(/[0-9]/, 'Password must contain at least one number')
+    .required('Password is required'),
+});
 
 const RegisterPage = () => {
-
-  const { register, handleSubmit, reset, formState: { errors }} = useForm({
-    resolver: yupResolver(RegisterSchema),
-  });
-
+  //LOCAL STATE
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const stateError = useSelector(userError);
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(RegisterSchema),
+  });
+
+  useEffect(() => {
+    if (stateError) {
+      Notify.failure('Email or password is Invalid');
+    }
+  }, [stateError]);
+
+  //FUNCTIONS
   const handleChange = setState => e => {
     setState(e.target.value);
   };
@@ -48,12 +67,6 @@ const RegisterPage = () => {
       password: '',
     });
   };
-
- useEffect(() => {
-  if (stateError) {
-    Notify.failure("Email or password is Invalid");
-  }
- }, [stateError])
 
   return (
     <RegisterForm onSubmit={handleSubmit(onUserFormSubmit)}>
@@ -89,21 +102,22 @@ const RegisterPage = () => {
           type="password"
           {...register('password', {
             minLength: {
-              value:6,
-              message: 'Min 6'
-            }
+              value: 6,
+              message: 'Min 6',
+            },
           })}
           onChange={handleChange(setPassword)}
           value={password}
           id="userPassword"
           required
         />
-        {errors.password && <span>{Notify.failure(errors.password.message)}</span>}
+        {errors.password && (
+          <span>{Notify.failure(errors.password.message)}</span>
+        )}
       </RegisterLabel>
       <SignUp type="submit">Sign Up</SignUp>
     </RegisterForm>
-  )
-
+  );
 };
 
 export default RegisterPage;

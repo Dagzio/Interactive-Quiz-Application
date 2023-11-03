@@ -54,14 +54,17 @@ export const UserName = styled.p`
 `;
 
 export const LogOut = styled.button`
-  height: 28px;
+  height: 32px;
   width: 80px;
+  padding: 4px 0;
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 8px;
   border: 2px solid #d88d02;
   color: #df960e;
   font-weight: 600;
+  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     background-color: #f0eeee;
   }

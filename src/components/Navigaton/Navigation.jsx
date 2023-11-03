@@ -12,18 +12,12 @@ const Navigation = () => {
     <HeaderAuthButtons>
       <HeaderSignUp
         type="button"
-        onClick={() => {
-          navigate('/register');
-        }}
-      >
+        onClick={() => {navigate('/register')}}>
         Sign Up
       </HeaderSignUp>
       <HeaderLogIn
         type="button"
-        onClick={() => {
-          navigate('/login');
-        }}
-      >
+        onClick={() => {navigate('/login')}}>
         Log in
       </HeaderLogIn>
     </HeaderAuthButtons>

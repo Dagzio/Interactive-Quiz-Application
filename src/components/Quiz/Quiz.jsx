@@ -1,9 +1,8 @@
-import Answers from 'components/Answers/Answers';
-import questionsHP from '../Question/questionsHP.json';
-import questionsSM from '../Question/questionsSM.json';
-import { harryPotterSound, superMarioSound } from 'mp3/sounds';
-import {Container} from '../SharedLayout/SharedLayout.styled'
 import { useParams } from 'react-router-dom';
+import Answers from 'components/Answers/Answers';
+import { questionsHP, questionsSM } from '../Question/questions/questions';
+import { harryPotterSound, superMarioSound } from 'mp3/sounds';
+import { Container } from '../SharedLayout/SharedLayout.styled';
 
 const Quiz = () => {
   const { quizType } = useParams();
@@ -14,7 +13,7 @@ const Quiz = () => {
   switch (quizType) {
     case 'harry-potter':
       questions = questionsHP;
-      roundMusic = harryPotterSound
+      roundMusic = harryPotterSound;
       break;
     case 'super-mario':
       questions = questionsSM;
@@ -27,9 +26,7 @@ const Quiz = () => {
 
   return (
     <Container>
-
-        <Answers questions={questions} soundtrack={roundMusic}/>
-
+      <Answers questions={questions} soundtrack={roundMusic} />
     </Container>
   );
 };

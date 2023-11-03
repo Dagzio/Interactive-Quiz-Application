@@ -1,10 +1,10 @@
 import { Suspense, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Container, Main } from './SharedLayout.styled';
-import Header from '../Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { selectUser, selectToken } from '../../redux/selectors';
 import { getCurrentUser, setToken } from '../../redux/user/userOperations';
+import { Container, Main } from './SharedLayout.styled';
+import Header from '../Header/Header';
 
 const SharedLayout = () => {
   const stateUser = useSelector(selectUser);

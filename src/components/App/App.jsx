@@ -1,13 +1,14 @@
+import { Suspense, lazy } from 'react';
+import { useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { selectIsLoading } from 'redux/selectors';
 import Loader from 'components/Loader/Loader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 import Quiz from 'components/Quiz/Quiz';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import SettingsPage from 'pages/SettingsPage/SettingsPage';
-import { Suspense, lazy } from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import { selectIsLoading } from 'redux/selectors';
+
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() =>

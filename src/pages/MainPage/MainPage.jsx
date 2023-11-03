@@ -1,54 +1,65 @@
-import * as ReactDOM from 'react-dom';
-import RulesModal from "components/RulesModal/RulesModal";
-import { MainPageWrapper, MainPageTitle, MainPageText, MainPageHPQuiz, MainPageSMQuiz, MainPageList, MainPageListItem,SpanWrapper, TextWrapper, ButtonHPIcon, ButtonSMIcon } from "./MainPage.styled";
 import { useState } from 'react';
-import icon from '../../img/symbol-defs.svg'
+import * as ReactDOM from 'react-dom';
+import RulesModal from 'components/RulesModal/RulesModal';
+import {
+  MainPageWrapper,
+  MainPageTitle,
+  MainPageText,
+  MainPageHPQuiz,
+  MainPageSMQuiz,
+  MainPageList,
+  MainPageListItem,
+  SpanWrapper,
+  TextWrapper,
+  ButtonHPIcon,
+  ButtonSMIcon,
+} from './MainPage.styled';
+import icon from '../../img/symbol-defs.svg';
 
+const MainPage = () => {
+  const [isOpen, setIsOpen] = useState(true);
 
-const MainPage =() => {
+  const onClose = () => {
+    setIsOpen(false);
+  };
 
-    const [isOpen, setIsOpen] = useState(true);
+  return (
+    <MainPageWrapper>
+      <MainPageTitle>Welcome to Interactive Quiz Application.</MainPageTitle>
+      <MainPageText>Change Your Quiz</MainPageText>
+      <nav>
+        <MainPageList>
+          <MainPageListItem>
+            <MainPageHPQuiz to={'quiz/harry-potter'}>
+              Harry Potter
+              <ButtonHPIcon>
+                <use href={icon + '#broom'} />
+              </ButtonHPIcon>
+            </MainPageHPQuiz>
+          </MainPageListItem>
 
-    const onClose = () => {
-        setIsOpen(false);
-      };
+          <SpanWrapper>
+            <TextWrapper>OR</TextWrapper>
+          </SpanWrapper>
 
-    return  <MainPageWrapper>
-<MainPageTitle>Welcome to Interactive Quiz Application.</MainPageTitle>
-<MainPageText>Change Your Quiz</MainPageText>
-        <nav>
-            <MainPageList>
-                <MainPageListItem>
-                    <MainPageHPQuiz to={'quiz/harry-potter'}>Harry Potter 
-                    <ButtonHPIcon>
-                        <use href={icon + "#broom"}/>
-                    </ButtonHPIcon>
-                    </MainPageHPQuiz>
-                    </MainPageListItem>
+          <MainPageListItem>
+            <MainPageSMQuiz to={'quiz/super-mario'}>
+              Super Mario
+              <ButtonSMIcon>
+                <use href={icon + '#mario-flag'} />
+              </ButtonSMIcon>
+            </MainPageSMQuiz>
+          </MainPageListItem>
+        </MainPageList>
+      </nav>
 
-                <SpanWrapper><TextWrapper>OR</TextWrapper></SpanWrapper>
-
-                <MainPageListItem>
-                    <MainPageSMQuiz to={'quiz/super-mario'}>Super Mario
-                    <ButtonSMIcon>
-                        <use href={icon + "#mario-flag"}/>
-                    </ButtonSMIcon>
-                    </MainPageSMQuiz>
-                    </MainPageListItem>
-
-            </MainPageList>
-        </nav>
-
-        {isOpen &&
+      {isOpen &&
         ReactDOM.createPortal(
-          <RulesModal onClose={onClose}/>,
+          <RulesModal onClose={onClose} />,
           document.querySelector('#rules-modal-root')
         )}
     </MainPageWrapper>
-   
-
-    
-
+  );
 };
 
 export default MainPage;

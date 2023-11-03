@@ -13,16 +13,19 @@ import {
 } from './RulesModal.styled';
 
 const StartRules = ({ onClose }) => {
+  //LOCAL STATE
   const [showAgain, setShowAgain] = useState(true);
   const [showModal, setShowModal] = useState(true);
   const shouldShowModal = sessionStorage.getItem('showRulesModal');
 
+  //ON RENDER COMPONENT
   useEffect(() => {
     if (shouldShowModal === 'false') {
       setShowModal(false);
     }
   }, [shouldShowModal]);
 
+  //FUNCTIONS
   const handleCheckboxChange = () => {
     setShowAgain(!showAgain);
   };
@@ -69,7 +72,6 @@ const StartRules = ({ onClose }) => {
                   <input
                     id="checkboxRules"
                     type="checkbox"
-                    // checked={''}
                     onChange={handleCheckboxChange}
                   />
                   Do not show me again this message

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/selectors';
-import icon from '../../img/symbol-defs.svg';
+import { updateUserData } from 'redux/user/userOperations';
 import {
   StyledAvatar,
   AddAvatar,
@@ -13,11 +13,13 @@ import {
   Wrapper,
   UserProfileBtn,
 } from './SettingsPage.styled';
-import { updateUserData } from 'redux/user/userOperations';
+import icon from '../../img/symbol-defs.svg';
 
 const SettingsPage = () => {
   const dispatch = useDispatch();
   const stateUser = useSelector(selectUser);
+
+  //INITIAL FORM VALUES 
   const { register, setValue, handleSubmit, getValues } = useForm({
     defaultValues: {
       avatar: null,
@@ -37,42 +39,13 @@ const SettingsPage = () => {
     setSelectedImage(stateUser.avatarUrl || null);
   }, [stateUser, setValue]);
 
-  const [selectedImage, setSelectedImage] = useState(
-    stateUser.avatarUrl || null
-  );
+  //LOCAL STATE
+  const [selectedImage, setSelectedImage] = useState(stateUser.avatarUrl || null);
   const [isDirty, setIsDirty] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleAvatarUpload = event => {
-    const file = event.currentTarget.files[0];
-    setValue('avatar', event.currentTarget.files[0]);
-    setIsDirty(true);
-
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl);
-      setSelectedImage(imageUrl);
-    }
-  };
-
-  const onFormSubmit = async () => {
-    const formData = getValues();
-    try {
-      setIsSubmitting(true);
-      dispatch(updateUserData(formData));
-      setIsDirty(false);
-      setIsSubmitting(false);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const handleInputChange = ({ target: { name, value } }) => {
-    console.log(name, value);
-    setValue(name, value);
-    setIsDirty(true);
-  };
-
+  //FUNCTIONS
+  //VALIDATION FROMAT PHONE
   const formatPhoneNumber = value => {
     const phoneNumber = value.replace(/[^\d]/g, '');
     const countryCode = phoneNumber.slice(0, 2);
@@ -102,8 +75,39 @@ const SettingsPage = () => {
     setIsDirty(true);
   };
 
+  const handleInputChange = ({ target: { name, value } }) => {
+    console.log(name, value);
+    setValue(name, value);
+    setIsDirty(true);
+  };
+
+  const handleAvatarUpload = event => {
+    const file = event.currentTarget.files[0];
+    setValue('avatar', event.currentTarget.files[0]);
+    setIsDirty(true);
+
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      console.log(imageUrl);
+      setSelectedImage(imageUrl);
+    }
+  };
+
+  const onFormSubmit = () => {
+    const formData = getValues();
+    try {
+      setIsSubmitting(true);
+      dispatch(updateUserData(formData));
+      setIsDirty(false);
+      setIsSubmitting(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <UserProfileForm onSubmit={handleSubmit(onFormSubmit)}>
+      {/*  avatar */}
       <StyledAvatar>
         {selectedImage && <img src={selectedImage} alt="Avatar" />}
       </StyledAvatar>
@@ -124,6 +128,7 @@ const SettingsPage = () => {
 
       <UserProfileTitle>{stateUser.name}</UserProfileTitle>
 
+      {/*  name */}
       <Wrapper>
         <UserProfileLabel>
           User Name
@@ -137,7 +142,6 @@ const SettingsPage = () => {
         </UserProfileLabel>
 
         {/*  email */}
-
         <UserProfileLabel>
           Email
           <UserProfileInput
@@ -145,13 +149,11 @@ const SettingsPage = () => {
             id="email"
             type="email"
             placeholder={stateUser.email}
-            // value={stateUser.email || ''}
             onChange={handleInputChange}
           />
         </UserProfileLabel>
 
         {/*  phone */}
-
         <UserProfileLabel>
           Phone
           <UserProfileInput
@@ -163,15 +165,14 @@ const SettingsPage = () => {
             onChange={handlePhoneNumberChange}
           />
         </UserProfileLabel>
-        {/*  skype */}
 
+        {/*  skype */}
         <UserProfileLabel>
           Skype
           <UserProfileInput
             {...register('skype')}
             placeholder={stateUser.skype || ''}
             id="skype"
-            // value={stateUser.skype || ''}
             onChange={handleInputChange}
           />
         </UserProfileLabel>

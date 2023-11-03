@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {string, object} from 'yup';
+import { string, object } from 'yup';
 import { userLogIn } from '../../redux/user/userOperations';
 import {
   LogIn,
@@ -12,22 +12,24 @@ import {
   LogInLabel,
 } from './LoginPage.styled';
 
+//VALIDATION SCHEMA
 const LogInSchema = object({
-    email: string().email('Please write a correct email').required(),
-    password: string().min(6).required(),
-  })
-  .required();
+  email: string().email('Please write a correct email').required(),
+  password: string().min(6).required(),
+}).required();
 
-
-
+//COMPONENT
 const LoginPage = () => {
   const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(LogInSchema),
   });
+
+  //LOCAL STATE
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
+  //FUNCTIONS
   const handleChange = setState => e => {
     setState(e.target.value);
   };
