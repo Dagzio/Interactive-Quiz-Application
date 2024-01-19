@@ -54,6 +54,15 @@ const RegisterPage = () => {
     }
   }, [stateError]);
 
+
+  useEffect(()=>{
+    if (errors) {
+      Object.keys(errors).forEach(key => {
+        Notify.failure(errors[key].message);
+      });
+    }
+  }, [errors])
+
   //FUNCTIONS
   const handleChange = setState => e => {
     setState(e.target.value);
@@ -80,7 +89,7 @@ const RegisterPage = () => {
           id="userName"
           placeholder="For example: Jacob Mercer"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+          
         />
       </RegisterLabel>
 
@@ -92,7 +101,7 @@ const RegisterPage = () => {
           onChange={handleChange(setEmail)}
           value={email}
           id="userEmail"
-          required
+          
         />
       </RegisterLabel>
 
@@ -109,11 +118,8 @@ const RegisterPage = () => {
           onChange={handleChange(setPassword)}
           value={password}
           id="userPassword"
-          required
+          
         />
-        {errors.password && (
-          <span>{Notify.failure(errors.password.message)}</span>
-        )}
       </RegisterLabel>
       <SignUp type="submit">Sign Up</SignUp>
     </RegisterForm>
